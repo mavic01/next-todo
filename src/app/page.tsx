@@ -86,7 +86,7 @@ export default function Home() {
       </nav>
 
       <main className="min-h-screen flex flex-col justify-center items-center p-6">
-        <h1 className="text-3xl font-bold mb-6">Welcome to Your Task Manager</h1>
+        <h1 className="text-2xl font-bold mb-6">Welcome to Your Task Manager</h1>
 
         {/* Toggle between login and signup */}
         <div className="w-full max-w-sm p-6 rounded-xl shadow-md bg-white">
@@ -97,7 +97,7 @@ export default function Home() {
                 Don’t have an account?{" "}
                 <Button
                   variant="link"
-                  className="p-0 text-teal-600"
+                  className="p-0 text-teal-600 cursor-pointer"
                   onClick={() => setShowLogin(false)}
                 >
                   Sign up
@@ -111,7 +111,7 @@ export default function Home() {
                 Already have an account?{" "}
                 <Button
                   variant="link"
-                  className="p-0 text-teal-600"
+                  className="p-0 text-teal-600 cursor-pointer"
                   onClick={() => setShowLogin(true)}
                 >
                   Log in

@@ -8,7 +8,8 @@ import { fetchTodoById as fetchTodo } from "@/services/todoService";
 import { Todo } from "@/types";
 
 export default function TodoDetail() {
-  const { id } = useParams();
+  const params = useParams();
+  const id = Array.isArray(params.id) ? params.id[0] : params.id;
 
   const {
     data: todo,

@@ -149,14 +149,14 @@ export default function Todos() {
           </h1>
           <div className="flex gap-2 sm:gap-4 flex-col sm:flex-row items-start sm:items-center w-full sm:w-auto">
             <Button
-              className="bg-teal-600 text-white w-full sm:w-auto"
+              className="bg-teal-600 text-white w-full sm:w-auto cursor-pointer"
               onClick={() => dialogRef.current?.showModal()}
             >
               + Add Todo
             </Button>
             <Button
               onClick={handleLogout}
-              className="bg-red-600 text-white w-full sm:w-auto"
+              className="bg-red-600 text-white w-full sm:w-auto cursor-pointer"
             >
               Logout
             </Button>
@@ -344,7 +344,7 @@ export default function Todos() {
           {/* Submit Button */}
           <Button
             type="submit"
-            className="bg-teal-600 hover:bg-teal-700 text-white w-full"
+            className="bg-teal-600 hover:bg-teal-700 text-white w-full cursor-pointer"
           >
             Submit
           </Button>

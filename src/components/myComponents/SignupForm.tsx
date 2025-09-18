@@ -45,7 +45,7 @@ export const SignupForm = () => {
       <button
         type="submit"
         disabled={loading}
-        className="bg-[#0d9389] text-white px-4 py-2 rounded w-full"
+        className="bg-[#0d9389] text-white px-4 py-2 rounded w-full cursor-pointer"
       >
         {loading ? "Signing up..." : "Sign Up"}
       </button>
