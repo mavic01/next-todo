@@ -73,7 +73,7 @@ export default function TodoDetail() {
           aria-label="Error message"
         >
           <p className="text-red-600 text-center font-semibold" role="alert">
-            ⚠️ Error fetching todo.
+            Error fetching todo.
           </p>
         </div>
       </main>

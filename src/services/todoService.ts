@@ -1,24 +1,7 @@
-// // src/services/todoService.js
-// import axios from "axios";
-
-// const BASE_URL = "https://jsonplaceholder.typicode.com/todos";
-
-// // // Get all todos
-// // export const fetchTodos = async () => {
-// //   const res = await axios.get(BASE_URL);
-// //   return res.data;
-// // };
-
-// // Get single todo
-// export const fetchTodoById = async (id) => {
-//   const res = await axios.get(`${BASE_URL}/${id}`);
-//   return res.data;
-// };
-
-
 import { supabase } from "@/lib/supabaseClient";
 import { Todo } from "@/types";
 
+// Fetch all todos for the authenticated user
 export async function fetchTodos(): Promise<Todo[]> {
   const {
     data: { session },
@@ -33,7 +16,7 @@ export async function fetchTodos(): Promise<Todo[]> {
   const { data, error } = await supabase
     .from("todos")
     .select("*")
-    .eq("user_id", session.user.id) // only their todos
+    .eq("user_id", session.user.id)
     .order("created_at", { ascending: false });
 
   if (error) {
@@ -45,6 +28,7 @@ export async function fetchTodos(): Promise<Todo[]> {
 }
 
 
+// Fetch a single todo by ID
 export const fetchTodoById = async (id: string) => {
   const {
     data: { session },
@@ -59,8 +43,8 @@ export const fetchTodoById = async (id: string) => {
   const { data, error } = await supabase
     .from("todos")
     .select("*")
-    .eq("id", id)                 // match todo id
-    .eq("user_id", session.user.id) // ensure it's owned by the logged-in user
+    .eq("id", id)
+    .eq("user_id", session.user.id)
     .single();
 
   if (error) {
@@ -71,40 +55,13 @@ export const fetchTodoById = async (id: string) => {
   return data;
 };
 
-
-
 // ✅ Delete a todo
 export async function deleteTodo(id: string): Promise<string> {
-  const { error } = await supabase
-    .from("todos")
-    .delete()
-    .eq("id", id);
+  const { error } = await supabase.from("todos").delete().eq("id", id);
 
   if (error) {
     console.error("Error deleting todo:", error.message);
     throw error;
   }
-
-  // return the deleted todo's id so onSuccess knows what to filter out
   return id;
 }
-
-
-
-
-// // ✅ Update a todo
-// export async function updateTodo(id: string, updates: Partial<Todo>) {
-//   const { data, error } = await supabase
-//     .from("todos")
-//     .update(updates)
-//     .eq("id", id)
-//     .select()
-//     .single();
-
-//   if (error) {
-//     console.error("Error updating todo:", error.message);
-//     throw error;
-//   }
-
-//   return data;
-// }

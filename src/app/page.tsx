@@ -1,63 +1,4 @@
-// // import { ReactElement } from "react"
-// // import { Routes, Route } from "react-router-dom"
-// // import Home from "./pages/Home"
-// // import NotFound from "./pages/NotFound"
-// // import Todos from "./pages/Todos"
-// // import TodoDetail from "./pages/TodoDetail"
-
-// // function App(): ReactElement {
-// //   return (
-// //     <Routes>
-// //       <Route path="/" element={<Home />} />
-// //       <Route path="/todos" element={<Todos />} />
-// //       <Route path="/todos/:id" element={<TodoDetail />} />
-// //       <Route path="*" element={<NotFound />} />
-// //     </Routes>
-// //   )
-// // }
-
-// // export default App
-
-
-// import { ReactElement } from "react";
-// import { Routes, Route } from "react-router-dom";
-// import Home from "./pages/Home";
-// import NotFound from "./pages/NotFound";
-// import Todos from "./pages/Todos";
-// import TodoDetail from "./pages/TodoDetail";
-// import { ProtectedRoute } from "./components/myComponents/ProtectedRoute"; 
-// import { AuthProvider } from "./contexts/AuthContext";
-
-// function App(): ReactElement {
-//   return (
-//     <AuthProvider>
-//       <Routes>
-//         <Route path="/" element={<Home />} />
-//         <Route
-//           path="/todos"
-//           element={
-//             <ProtectedRoute>
-//               <Todos />
-//             </ProtectedRoute>
-//           }
-//         />
-//         <Route
-//           path="/todos/:id"
-//           element={
-//             <ProtectedRoute>
-//               <TodoDetail />
-//             </ProtectedRoute>
-//           }
-//         />
-//         <Route path="*" element={<NotFound />} />
-//       </Routes>
-//     </AuthProvider>
-//   );
-// }
-
-// export default App;
-
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
@@ -72,7 +13,6 @@ export default function Home() {
   const router = useRouter();
   const [showLogin, setShowLogin] = useState(true);
 
-  // Redirect if logged in
   useEffect(() => {
     if (session) {
       router.push("/todos");
@@ -86,7 +26,9 @@ export default function Home() {
       </nav>
 
       <main className="min-h-screen flex flex-col justify-center items-center p-6">
-        <h1 className="text-2xl font-bold mb-6">Welcome to Your Task Manager</h1>
+        <h1 className="text-2xl font-bold mb-6">
+          Welcome to Your Task Manager
+        </h1>
 
         {/* Toggle between login and signup */}
         <div className="w-full max-w-sm p-6 rounded-xl shadow-md bg-white">
